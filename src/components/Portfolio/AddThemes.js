@@ -9,7 +9,7 @@ import { Table } from 'react-bootstrap';
 import "./AddThemes.css";
 
 
-function AddThemes() {
+function AddThemes(props) {
     const [themeName, setThemeName] = useState('');
     const [risk, setRisk] = useState('');
     const [investmentHorizon, setInvestmentHorizon] = useState('');
@@ -78,7 +78,7 @@ function AddThemes() {
 
         <div className="container">
             {/* <Navbar /> */}
-            
+
             <br />
             <h2> Customize Your Theme</h2>
             <br />
@@ -87,18 +87,104 @@ function AddThemes() {
                 <div className="side-by-side">
                     <Form.Group controlId="themeName">
                         <Form.Label className='font-weight-bold' style={{ fontSize: '25px', color: 'darkblack' }}>Theme Name</Form.Label>
-                        <Form.Control type="text"  value={themeName} onChange={(e) => setThemeName(e.target.value)} style={{ fontSize: '16px', color: 'black',border:"2px solid black" }} />
+                        <Form.Control type="text" value={themeName} onChange={(e) => setThemeName(e.target.value)} style={{ fontSize: '16px', color: 'black', border: "2px solid black" }} />
                     </Form.Group>&nbsp;&nbsp;&nbsp;
                     <br />
                     <Form.Group controlId="risk">
-                        <Form.Label className='font-weight-bold' style={{ fontSize: '25px', color: 'darkblack' }}>Risk</Form.Label>
-                        <Form.Control type="text" style={{border:"2px solid black"}}value={risk} onChange={(e) => setRisk(e.target.value)} />
+                        <Form.Label
+                            className='font-weight-bold'
+                            style={{ fontSize: '25px', color: 'darkblack' }}>Risk</Form.Label>
+                        <br />
+                        <select
+
+                            className="Risk"
+
+                            style={{
+
+                                borderRadius: "4px ",
+
+                                border: "2px solid black",
+
+                                width: "170px",
+
+                                height: "39px",
+
+                                fontSize: "18px",
+
+                            }}
+
+                            onChange={(e) => {
+
+                                setRisk(e.target.value);
+
+
+
+                            }}
+
+                            value={props.selected}
+
+                            name="risk"
+
+                        >
+
+                            <option value="">---select---</option>
+
+                            <option value="low">Low</option>
+
+                            <option value="high">High</option>
+
+                            <option value="high">moderate</option>
+
+                        </select>
+                        {/* <Form.Control type="text" style={{border:"2px solid black"}}value={risk} onChange={(e) => setRisk(e.target.value)} /> */}
+
                     </Form.Group>&nbsp;&nbsp;&nbsp;
                     <br />
                     <br />
                     <Form.Group controlId="investmentHorizon" style={{ fontSize: '25px', color: 'darkblack' }}>
                         <Form.Label className='font-weight-bold'>Investment Duration</Form.Label>
-                        <Form.Control type="text" style={{border:"2px solid black"}}value={investmentHorizon} onChange={(e) => setInvestmentHorizon(e.target.value)} />
+                        {/* <Form.Control type="text" style={{ border: "2px solid black" }} value={investmentHorizon} onChange={(e) => setInvestmentHorizon(e.target.value)} /> */}
+                        <br />
+
+                        <select
+
+                            className="investmenthorizon"
+
+                            style={{
+
+                                borderRadius: "4px ",
+
+                                border: "2px solid black",
+
+                                width: "170px",
+
+                                height: "39px",
+
+                                fontSize: "18px",
+
+                            }}
+
+                            onChange={(e) => {
+
+                                setInvestmentHorizon(e.target.value);
+
+
+
+                            }}
+
+                            value={props.selected}
+
+                        >
+
+                            <option value="">---select---</option>
+
+                            <option value="short term">Short</option>
+
+                            <option value="medium term">Medium</option>
+
+                            <option value="long term">Long</option>
+
+                        </select>
                     </Form.Group>&nbsp;&nbsp;&nbsp;
 
                 </div>
@@ -115,7 +201,7 @@ function AddThemes() {
                 <div className='table table-sm table-dark'>
 
                     <Form onSubmit={handleSubmits}>
-                        <label htmlFor="themeId" style={{fontSize:"20px",color:"black"}} className="themeid">Your Theme ID  :&nbsp;</label>
+                        <label htmlFor="themeId" style={{ fontSize: "20px", color: "black" }} className="themeid">Your Theme ID  :&nbsp;</label>
                         <input
                             type="text"
                             id="themeId"
@@ -163,7 +249,7 @@ function AddThemes() {
                                 ))}
                             </tbody>
                         </Table>
-                        
+
                         {/* <Button type="submit" className='btn btn-info'>Save Assets</Button> */}
                         {/* <button
                             className="my-button" type="submit" onClick={navigate("/landingpage")}>
